@@ -42,14 +42,13 @@ public class ParserErg4Main {
                 + "print(a)");
         
         
-         // FormTools.getProduced().toString();
+      
                        
-        //System.out.format(FormTools.getProduced().toString());
+       
         System.out.format("%s",FormTools.getProduced());
         
         
-        // This is my Second commit
-        // Nick make taht commend
+      
         
         
         

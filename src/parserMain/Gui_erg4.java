@@ -1,9 +1,12 @@
 package parserMain;
 
-
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
@@ -69,26 +72,25 @@ public class Gui_erg4 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 989, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jButton3)
-                        .addGap(128, 128, 128))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(147, 147, 147))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1055, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(118, 118, 118))
+                                .addComponent(jButton3)
+                                .addGap(128, 128, 128))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(148, 148, 148))))))
+                                .addComponent(jButton2)
+                                .addGap(118, 118, 118))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
+                .addGap(208, 208, 208)
                 .addComponent(jButton1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -97,7 +99,7 @@ public class Gui_erg4 extends javax.swing.JFrame {
                         .addGap(97, 97, 97))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton2))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -109,34 +111,82 @@ public class Gui_erg4 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    @SuppressWarnings("empty-statement")
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+        
+        // Δημιουργώ έναν επιλογέα αρχείων που τον ονομάζω "   fc  "
         JFileChooser fc = new JFileChooser();
-
+        //Τον ονομάζω  "open file"
         fc.setDialogTitle("open file");
+        //Κάνω να εμφανίζει το αποτέλεσμα σε μια μεταβλητή που την ονομάζω " result "                                    result
         int result = fc.showOpenDialog(this);
+        
         if (result == JFileChooser.CANCEL_OPTION) {
-            System.out.println("User Selected Cancel !");
+            System.out.println("Cancel or the close-dialog icon was clicked");
         }
-//System.out.println("The file open is: " + fc.getSelectedFile().getAbsolutePath());
 
+        
         File chosenFile = fc.getSelectedFile();
 
-//             FileReader myReader = new FileReader();
-        // jEditorPane1.setText(edwMpeneisToObjectStringPouPrepeiNaValw);
-//           jTextField1.setText(myReader);
+        try {
+
+            FileReader myReader = new FileReader(chosenFile);
+            jTextField1.read(myReader, fc);
+        } catch (IOException ioe) {
+
+            
+            System.out.println("Exception occured");
+
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add 
+        
+        
+          // JFileChooser fc = new JFileChooser();
+ 
+            // Invoke the showsSaveDialog function to show the save dialog
+          //  int result = fc.showSaveDialog(this);
+ 
+         //   if (result == JFileChooser.APPROVE_OPTION) {
+ 
+                // Set the label to the path of the selected directory
+           //     File fi = new File(fc.getSelectedFile().getAbsolutePath());
+ 
+            //    try {
+                    // Create a file writer
+              //      FileWriter wr = new FileWriter(fi, false);
+ 
+                    // Create buffered writer to write
+               //     BufferedWriter w = new BufferedWriter(wr);
+ 
+                    // Write
+                //    w.write(jTextField1.getText());
+ 
+              //      w.flush();
+              //      w.close();
+              //  }
+             //  catch (Exception e) {
+              //      JOptionPane.showMessageDialog( e.getMessage());
+         //       }
+     //       }
+        
+        
+        
+        
+       
 
-        JFileChooser file = new JFileChooser();
-        file.setCurrentDirectory(new File("uper.dir"));
+   //    JFileChooser file = new JFileChooser();
+    //  file.setCurrentDirectory(new File("uper.dir"));
 
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("All Files", "txt", "doc");
-// file.add.addChoosableFileFilter(filter);
+    //  FileNameExtensionFilter filter = new FileNameExtensionFilter("All Files", "txt", "doc");
+      // file.add.addChoosableFileFilter(filter);
 
-        file.showSaveDialog(null);
+     //   file.showSaveDialog(null);
+
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
