@@ -41,10 +41,6 @@ public class ParserErg4Main {
                 + "};\n"
                 + "print(a)");
         
-        
-      
-                       
-       
         System.out.format("%s",FormTools.getProduced());
         
         
