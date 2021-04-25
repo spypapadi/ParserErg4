@@ -319,9 +319,9 @@ public class Parser {
                             FormTools.produceToken(token.getData());
 
                             //  Κάνω αλλαγή γραμμής
-                            FormTools.produceNewLine();
+                          //  FormTools.produceNewLine();
                             //   Τυπώνω τα tabs
-                            FormTools.produceTabs();
+                          //  FormTools.produceTabs();
                             //Καλώ το επόμενο λεκτικό 
                             token = lex.nextToken();
 
@@ -343,10 +343,15 @@ public class Parser {
 //   <else_part> 	: := 	  else { <statements> } 
 //                        | 	  ε
     private void else_part() {
+        
 
         //  Αν το λεκτικό είναι το  " else "
         if (token.getType().name().equals("elseTK")) {
-            //Προχωράω 4 κενά για στοίχιση του " else " κάτω από το δεξί άγκιστρο 
+            
+          //  Κάνω αλλαγή γραμμής
+            FormTools.produceNewLine();
+            //  Προχωράω 4 κενά για στοίχιση του " else " κάτω από το αριστερό άγκιστρο 
+            FormTools.produceTabs();
 
             //Παίρνω το data του λεκτικού
             FormTools.produceToken(token.getData());

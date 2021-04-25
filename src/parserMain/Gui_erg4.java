@@ -114,19 +114,17 @@ public class Gui_erg4 extends javax.swing.JFrame {
     @SuppressWarnings("empty-statement")
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        
         // Δημιουργώ έναν επιλογέα αρχείων που τον ονομάζω "   fc  "
         JFileChooser fc = new JFileChooser();
         //Τον ονομάζω  "open file"
         fc.setDialogTitle("open file");
         //Κάνω να εμφανίζει το αποτέλεσμα σε μια μεταβλητή που την ονομάζω " result "                                    result
         int result = fc.showOpenDialog(this);
-        
+
         if (result == JFileChooser.CANCEL_OPTION) {
             System.out.println("Cancel or the close-dialog icon was clicked");
         }
 
-        
         File chosenFile = fc.getSelectedFile();
 
         try {
@@ -135,7 +133,6 @@ public class Gui_erg4 extends javax.swing.JFrame {
             jTextField1.read(myReader, fc);
         } catch (IOException ioe) {
 
-            
             System.out.println("Exception occured");
 
         }
@@ -144,49 +141,50 @@ public class Gui_erg4 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add 
-        
-        
-          // JFileChooser fc = new JFileChooser();
- 
-            // Invoke the showsSaveDialog function to show the save dialog
-          //  int result = fc.showSaveDialog(this);
- 
-         //   if (result == JFileChooser.APPROVE_OPTION) {
- 
-                // Set the label to the path of the selected directory
-           //     File fi = new File(fc.getSelectedFile().getAbsolutePath());
- 
-            //    try {
-                    // Create a file writer
-              //      FileWriter wr = new FileWriter(fi, false);
- 
-                    // Create buffered writer to write
-               //     BufferedWriter w = new BufferedWriter(wr);
- 
-                    // Write
-                //    w.write(jTextField1.getText());
- 
-              //      w.flush();
-              //      w.close();
-              //  }
-             //  catch (Exception e) {
-              //      JOptionPane.showMessageDialog( e.getMessage());
-         //       }
-     //       }
-        
-        
-        
-        
-       
 
-   //    JFileChooser file = new JFileChooser();
-    //  file.setCurrentDirectory(new File("uper.dir"));
+      //  JFrame parentFrame = new JFrame();
 
-    //  FileNameExtensionFilter filter = new FileNameExtensionFilter("All Files", "txt", "doc");
-      // file.add.addChoosableFileFilter(filter);
+       // JFileChooser fileChooser = new JFileChooser();
+       // fileChooser.setDialogTitle("Specify a file to save");
 
-     //   file.showSaveDialog(null);
+       // int userSelection = fileChooser.showSaveDialog(parentFrame);
 
+      //  if (userSelection == JFileChooser.APPROVE_OPTION) {
+      //      File fileToSave = fileChooser.getSelectedFile();
+       //     System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+     //   }
+
+        
+        
+        
+        
+        
+        
+        // JFileChooser fc = new JFileChooser();
+        // Invoke the showsSaveDialog function to show the save dialog
+        //  int result = fc.showSaveDialog(this);
+        //   if (result == JFileChooser.APPROVE_OPTION) {
+        // Set the label to the path of the selected directory
+        //     File fi = new File(fc.getSelectedFile().getAbsolutePath());
+        //    try {
+        // Create a file writer
+        //      FileWriter wr = new FileWriter(fi, false);
+        // Create buffered writer to write
+        //     BufferedWriter w = new BufferedWriter(wr);
+        // Write
+        //    w.write(jTextField1.getText());
+        //      w.flush();
+        //      w.close();
+        //  }
+        //  catch (Exception e) {
+        //      JOptionPane.showMessageDialog( e.getMessage());
+        //       }
+        //       }
+        //    JFileChooser file = new JFileChooser();
+        //  file.setCurrentDirectory(new File("uper.dir"));
+        //  FileNameExtensionFilter filter = new FileNameExtensionFilter("All Files", "txt", "doc");
+        // file.add.addChoosableFileFilter(filter);
+        //   file.showSaveDialog(null);
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
