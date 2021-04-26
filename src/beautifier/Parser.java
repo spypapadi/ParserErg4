@@ -59,20 +59,19 @@ public class Parser {
     private void statements() {
 
         //  Καλώ τη μεθοδο statetement
-            statement();
+        statement();
 
         // Με την προυπόθεση ύπαρξης διαχωριστικού συμβόλου " ; "
         while (token.type.name().equals("semicolTK")) {
             // Παίρνω το data του λεκτικού
             FormTools.produceToken(token.getData());
             // Κάνω αλλαγή γραμμής
-           FormTools.produceNewLine();
+            FormTools.produceNewLine();
             // Τυπώνω τα tabs
             FormTools.produceTabs();
             // Καλώ το επόμενο λεκτικό 
             token = lex.nextToken();
             //  Καλώ τη μεθοδο statetement
-
             statement();
 
         }
@@ -99,13 +98,8 @@ public class Parser {
         // Αν το λεκτικό είναι το " print " 
         if (token.getType().name().equals("printTK")) {
             // Παίρνω το data του λεκτικού   
-            FormTools.produceToken(token.getData());
-            // Προσθετω ένα Tab
-            //   FormTools.addTab();
-            // Τυπώνω τα tabs 
-            //  FormTools.produceTabs();
-            //Αφήνω ένα κενό
-            //  FormTools.produceSpace();
+            FormTools.produceToken(token.getData());           
+            // Καλώ το επόμενο λεκτικό    
             token = lex.nextToken();
 
             // Αν το λεκτικό είναι το " αριστερή παρένθεση "      
@@ -119,6 +113,7 @@ public class Parser {
                 expression();
                 // Αν το λεκτικό είναι το " δεξιά παρένθεση "   
                 if (token.getType().name().equals("rightpTK")) {
+                    // Παίρνω το data του λεκτικού  
                     FormTools.produceToken(token.getData());
                     // Καλώ το επόμενο λεκτικό     
                     token = lex.nextToken();
@@ -135,17 +130,21 @@ public class Parser {
     private void assign_stat() {
 
         if (token.type.name().equals("variableTK")) {
-             //  Παίρνω το data του λεκτικού
+            // Παίρνω το data του λεκτικού
             FormTools.produceToken(token.getData());
+            // Αφήνω ένα κενό 
             FormTools.produceSpace();
-
+            // Καλώ το επόμενο λεκτικό            
             token = lex.nextToken();
-            if (token.type.name().equals("assignTK")) {
-                 //  Παίρνω το data του λεκτικού
-                FormTools.produceToken(token.getData());
-                FormTools.produceSpace();
 
+            if (token.type.name().equals("assignTK")) {
+                // Παίρνω το data του λεκτικού
+                FormTools.produceToken(token.getData());
+                // Αφήνω ένα κενό 
+                FormTools.produceSpace();
+                // Καλώ το επόμενο λεκτικό        
                 token = lex.nextToken();
+                // Καλώ τη μεθοδο expression
                 expression();
             } else {
                 error();
@@ -160,36 +159,33 @@ public class Parser {
 
         // Αν το λεκτικό είναι το " while " 
         if (token.getType().name().equals("whileTK")) {
-            //  Παίρνω το data του λεκτικού
+            // Παίρνω το data του λεκτικού
             FormTools.produceToken(token.getData());
-            //  Αφήνω ένα κενό 
+            // Αφήνω ένα κενό 
             FormTools.produceSpace();
-            //  Καλώ το επόμενο λεκτικό 
+            // Καλώ το επόμενο λεκτικό 
             token = lex.nextToken();
 
             // Αν το λεκτικό είναι το " αριστερή παρένθεση "     
             if (token.getType().name().equals("leftpTK")) {
-                //   Παίρνω το data του λεκτικού
+                // Παίρνω το data του λεκτικού
                 FormTools.produceToken(token.getData());
-                //   Καλώ το επόμενο λεκτικό 
+                // Καλώ το επόμενο λεκτικό 
                 token = lex.nextToken();
-                //   Καλώ τις παρακάτω μεθόδους
+                // Καλώ τις παρακάτω μεθόδους
                 expression();
                 relOperator();
                 expression();
 
-                //  Αν το λεκτικό είναι το " δεξιά  παρένθεση "     
+                // Αν το λεκτικό είναι το " δεξιά  παρένθεση "     
                 if (token.getType().name().equals("rightpTK")) {
-                    //  Παίρνω το data του λεκτικού
+                    // Παίρνω το data του λεκτικού
                     FormTools.produceToken(token.getData());
-                    //  Κάνω αλλαγή γραμμής
+                    // Κάνω αλλαγή γραμμής
                     FormTools.produceNewLine();
-                    //  Προσθέτω tabs
-                    //  FormTools.addTab();
-                    //   Τυπώνω τα tabs
+                    //  Τυπώνω τα tabs
                     FormTools.produceTabs();
-
-                    //  Καλώ το επόμενο λεκτικό 
+                    // Καλώ το επόμενο λεκτικό 
                     token = lex.nextToken();
 
                     // Αν το λεκτικό είναι το " αριστερό άγκιστρο "     
@@ -198,37 +194,35 @@ public class Parser {
                         FormTools.produceToken(token.getData());
                         // Κάνω αλλαγή γραμμής
                         FormTools.produceNewLine();
-                        //  Προσθέτω tabs
+                        // Προσθέτω tabs
                         FormTools.addTab();
-                        //   Τυπώνω τα tabs
+                        // Τυπώνω τα tabs
                         FormTools.produceTabs();
-                        //  Καλώ το επόμενο λεκτικό 
+                        // Καλώ το επόμενο λεκτικό 
                         token = lex.nextToken();
-                        //   Καλώ την μέθοδο " statements "
+                        // Καλώ την μέθοδο " statements "
                         statements();
 
-                        //  Κάνω αλλαγή γραμμής
+                        // Κάνω αλλαγή γραμμής
                         FormTools.produceNewLine();
-                        //   Προσθέτω tabs
+                        // Προσθέτω tabs
                         FormTools.deTab();
-                        //    Τυπώνω τα tabs
+                        // Τυπώνω τα tabs
                         FormTools.produceTabs();
-                        //      Καλώ το επόμενο λεκτικό 
+                        // Καλώ το επόμενο λεκτικό 
                         token = lex.nextToken();
 
-                        //  Αν το λεκτικό είναι το " δεξί άγκιστρο "     
+                        // Αν το λεκτικό είναι το " δεξί άγκιστρο "     
                         if (token.getType().name().equals("rightbTK")) {
-                            //  Παίρνω το data του λεκτικού
+                            // Παίρνω το data του λεκτικού
                             FormTools.produceToken(token.getData());
-                            //  Κάνω αλλαγή γραμμής
+                            // Κάνω αλλαγή γραμμής
                             FormTools.produceNewLine();
-                            //  Αφαιρώ tabs
+                            // Αφαιρώ tabs
                             FormTools.deTab();
-                            //   Τυπώνω τα tabs
+                            // Τυπώνω τα tabs
                             FormTools.produceTabs();
 
-                            //  Παίρνω το data του λεκτικού
-                            //  FormTools.produceToken(token.getData());
                         } else {
                             error();
                         }
@@ -271,8 +265,8 @@ public class Parser {
             if (token.getType().name().equals("leftpTK")) {
                 // Παίρνω το data του λεκτικού
                 FormTools.produceToken(token.getData());
-                // Καλώ με τη σειρά τις παρακάτω μεθόδους
-                //  Καλώ το επόμενο λεκτικό 
+
+                // Καλώ το επόμενο λεκτικό 
                 token = lex.nextToken();
                 expression();
                 relOperator();
@@ -280,55 +274,50 @@ public class Parser {
 
                 // Αν το λεκτικό είναι η δεξιά  παρένθεση
                 if (token.getType().name().equals("rightpTK")) {
-                    //  Παίρνω το data του λεκτικού
+                    // Παίρνω το data του λεκτικού
                     FormTools.produceToken(token.getData());
-                    //  Κάνω αλλαγή γραμμής
+                    // Κάνω αλλαγή γραμμής
                     FormTools.produceNewLine();
+                    // Τυπώνω τα tabs
                     FormTools.produceTabs();
-
                     // Καλώ το επόμενο λεκτικό 
                     token = lex.nextToken();
 
                     // Αν το λεκτικό είναι το αριστερό άγκιστρο
                     if (token.getType().name().equals("leftbTK")) {
-                        //  Παίρνω το data του λεκτικού
+                        // Παίρνω το data του λεκτικού
                         FormTools.produceToken(token.getData());
-                        //  Κάνω αλλαγή γραμμής
+                        // Κάνω αλλαγή γραμμής
                         FormTools.produceNewLine();
-                        //    Προσθέτω tabs
+                        // Προσθέτω tabs
                         FormTools.addTab();
-                        //   Τυπώνω τα tabs
+                        // Τυπώνω τα tabs
                         FormTools.produceTabs();
-                        //   Καλώ το επόμενο λεκτικό 
+                        // Καλώ το επόμενο λεκτικό 
                         token = lex.nextToken();
 
-                        //   Καλώ τη μέθοδο statements
+                        // Καλώ τη μέθοδο statements
                         statements();
 
                         // Κάνω αλλαγή γραμμής
                         FormTools.produceNewLine();
-                        //Αφαιρώ  tabs για να υπάρξει κάθετη στοίχιση του αριστερού και δεξιού bracket
+                        // Αφαιρώ  tabs για να υπάρξει κάθετη στοίχιση του αριστερού και δεξιού bracket
                         FormTools.deTab();
-                        //   Τυπώνω τα tabs
+                        // Τυπώνω τα tabs
                         FormTools.produceTabs();
-                        //Καλώ το επόμενο λεκτικό 
+                        // Καλώ το επόμενο λεκτικό 
 
-                        //  Αν το λεκτικό είναι το δεξί άγκιστρο
+                        // Αν το λεκτικό είναι το δεξί άγκιστρο
                         if (token.getType().name().equals("rightbTK")) {
                             // Παίρνω το data του λεκτικού
                             FormTools.produceToken(token.getData());
-
-                            //  Κάνω αλλαγή γραμμής
-                          //  FormTools.produceNewLine();
-                            //   Τυπώνω τα tabs
-                          //  FormTools.produceTabs();
                             //Καλώ το επόμενο λεκτικό 
                             token = lex.nextToken();
 
                             //Καλώ τη μέθοδο else_part
                             else_part();
 
-                            //   Σε κάθε άλλη περίπτωση καλώ την μέθοδο error
+                            // Σε κάθε άλλη περίπτωση καλώ την μέθοδο error
                         } else {
                             error();
 
@@ -343,21 +332,20 @@ public class Parser {
 //   <else_part> 	: := 	  else { <statements> } 
 //                        | 	  ε
     private void else_part() {
-        
 
         //  Αν το λεκτικό είναι το  " else "
         if (token.getType().name().equals("elseTK")) {
-            
-          //  Κάνω αλλαγή γραμμής
+
+            //  Κάνω αλλαγή γραμμής
             FormTools.produceNewLine();
-            //  Προχωράω 4 κενά για στοίχιση του " else " κάτω από το αριστερό άγκιστρο 
+            //  Τυπώνω τα tabs για στοίχιση του " else " κάτω από το αριστερό άγκιστρο 
             FormTools.produceTabs();
 
             //Παίρνω το data του λεκτικού
             FormTools.produceToken(token.getData());
             //  Κάνω αλλαγή γραμμής
             FormTools.produceNewLine();
-            //  Προχωράω 4 κενά για στοίχιση του " else " κάτω από το αριστερό άγκιστρο 
+            // Τυπώνω τα tabs για στοίχιση του " else " κάτω από το αριστερό άγκιστρο 
             FormTools.produceTabs();
 
             //  Καλώ το επόμενο λεκτικό 
@@ -376,7 +364,7 @@ public class Parser {
                 //  Καλώ το επόμενο λεκτικό 
                 token = lex.nextToken();
                 //   Καλώ την μέθοδο " statements "
-                     statements();
+                statements();
 
                 //   Αν το λεκτικό είναι το δεξί άγκιστρο
                 if (token.getType().name().equals("rightbTK")) {
@@ -385,7 +373,7 @@ public class Parser {
 
                     //  Καλώ το επόμενο λεκτικό 
                     token = lex.nextToken();
-                   // Καλώ τη μέθοδο " print_stat() "
+                    // Καλώ τη μέθοδο " print_stat() "
                     print_stat();
 
                 }
