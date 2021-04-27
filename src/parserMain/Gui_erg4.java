@@ -144,7 +144,7 @@ public class Gui_erg4 extends javax.swing.JFrame {
             // στο πεδίο του αντικειμένου " jTextField1 " 
             jTextField1.setText("Text parsing failed");
         }
-        // jTextField1.setText(" Text parsing was successful");
+       
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -163,7 +163,7 @@ public class Gui_erg4 extends javax.swing.JFrame {
         // Όταν η έναρξη επικοινωνίας εγκριθεί
         if (result == JFileChooser.APPROVE_OPTION) {
 
-            //  System.out.println("Cancel or the close-dialog icon was clicked");
+            
             try {
             // Επιλέγεται το αρχείο
                 chosenFile = fc.getSelectedFile();
@@ -182,7 +182,7 @@ public class Gui_erg4 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add 
+        
 
         // Δημιουργώ έναν επιλογέα αρχείων που τον ονομάζω "   fc  "
         JFileChooser fc = new JFileChooser();
@@ -190,12 +190,16 @@ public class Gui_erg4 extends javax.swing.JFrame {
         // Κάνω να εμφανίζει το αποτέλεσμα σε μια μεταβλητή που την ονομάζω " result "                                   
         int result = fc.showSaveDialog(this);
 
+        // Όταν η έναρξη επικοινωνίας εγκριθεί
         if (result == JFileChooser.APPROVE_OPTION) {
-        // System.out.println("Cancel or the close-dialog icon was clicked");
+       
 
             try {
+                // Διαλέγω το αρχείο
                 File chosenFile = fc.getSelectedFile();
+                // Κάνω εγγραφή του αρχείου
                 FileWriter myWriter = new FileWriter(chosenFile);
+                // Καλώ τη μέθοδο write για να κάνω save το αρχείο που εμφανίζεται στο TextArea1
                 jTextArea1.write(myWriter);
             } catch (IOException ioe) {
 
