@@ -130,7 +130,7 @@ public class Gui_erg4 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        // Δημιουργώ ένα αντικείμενο με όνομα test  τύπου71   "  Parser   "
+        // Δημιουργώ ένα αντικείμενο με όνομα test  τύπου "  Parser   "
         Parser test = new Parser(jTextArea1.getText());
         // Κάνω έλεγχο για λάθη στα tokens
         if (!test.getError()) {
